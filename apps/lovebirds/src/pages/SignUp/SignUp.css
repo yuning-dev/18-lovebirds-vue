@@ -1,0 +1,72 @@
+.wrapper {
+    height: 96.6vh;
+    width: 80%;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #002242;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.contentBox {
+    background-color: aliceblue;
+    width: 775px;
+    max-width: 75%;
+    margin: 0 auto 0 auto;
+    border-radius: 5px;
+}
+
+.contentSubBox {
+    padding: 10px 40px 50px 40px;
+}
+
+.title {
+    max-width: 100%;
+    margin: 0 auto 0 auto;
+    font-size: 1.4em;
+    padding: 20px 40px;
+    background: #E9E9E9;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.contentWrapper {
+    width: 725px;
+    max-width: 100%;
+    margin: 0 auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    border: 1px solid #CACACA;
+    border-radius: 5px;
+}
+
+.sectionTitle {
+    width: 750px;
+    max-width: 100%;
+    margin: 40px auto 15px auto;
+    font-size: 1.2em;
+}
+
+.item {
+    width: 325px;
+    margin: 10px;
+}
+
+.selectCountry {
+    width: 150px;
+}
+
+.signUpBtn {
+    display: block;
+    margin: 40px auto 0 auto;
+    padding: 5px 10px 8px 10px;
+    font-size: 1em;
+    background: #318CE7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+

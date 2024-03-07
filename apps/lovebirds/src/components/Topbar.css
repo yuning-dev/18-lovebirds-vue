@@ -1,0 +1,43 @@
+.logo {
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+.wrapper {
+    background-color: black;
+}
+
+.wrapper * {
+    color: white;
+}
+
+.topbar {
+    display: flex;
+    width: 80%;
+    max-width: 1920px;
+    margin: 0 auto 0 auto;
+}
+
+.logo {
+    float: left;
+    padding-top: 2.5px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.topbarRight {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.topbarLink {
+    padding: 5px 15px;
+    text-decoration: none;
+}
+
+.topbarLink:hover {
+    background: #808080;
+}
