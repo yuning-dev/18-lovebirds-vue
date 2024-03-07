@@ -1,11 +1,13 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import axios from 'axios'
 
 export const useUserStore = defineStore('user', {
-    state: () => ({}),
+    state: () => ({
+        user: null,
+    }),
     actions: {
         signUp(data) {
-            
+            axios.post('http://localhost:5173/api/user', data)
         }
     }
 })
