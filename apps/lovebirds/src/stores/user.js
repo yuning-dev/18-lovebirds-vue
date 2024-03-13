@@ -8,6 +8,9 @@ export const useUserStore = defineStore('user', {
     actions: {
         signUp(data) {
             axios.post('http://localhost:5173/api/user', data)
+        },
+        logIn(data) {
+            axios.post('http://localhost:5173/api/auth/log-in', data)
         }
     }
 })

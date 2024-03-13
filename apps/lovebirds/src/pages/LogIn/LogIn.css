@@ -6,16 +6,22 @@
     margin-right: auto;
     background-color: #002242;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center
+}
+
+.panelsWrapper {
+    display: flex;
+    justify-content: space-around;
 }
 
 .contentBox {
     background-color: aliceblue;
-    width: 775px;
+    width: 335px;
     max-width: 75%;
     margin: 0 auto 0 auto;
-    border-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .title {
@@ -32,47 +38,32 @@
     padding: 10px 40px 50px 40px;
 }
 
-.logInLink {
-    float: right;
-    color: #1F75FE;
-}
-
 .contentWrapper {
-    width: 725px;
-    max-width: 100%;
-    margin: 0 auto 0 auto;
+    margin-top: 40px;
     display: flex;
-    flex-wrap: wrap;
-    background: white;
-    border: 1px solid #CACACA;
-    border-radius: 5px;
-}
-
-.sectionTitle {
-    width: 750px;
-    max-width: 100%;
-    margin: 40px auto 15px auto;
-    font-size: 1.2em;
-}
-
-.item {
-    width: 325px;
-    margin: 10px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 input[type=text] {
-    width: 150px;
-    height: 10px;
+    height: 25px;
+    width: 250px;
 }
 
-.signUpBtn {
-    display: block;
-    margin: 40px auto 0 auto;
-    padding: 5px 10px 8px 10px;
-    font-size: 1em;
-    background: #318CE7;
+.logInBtn {
+    margin-top: 10px;
+    width: 253.5px;
+    height: 30px;
+    background: #03C03C;
     color: white;
     border: none;
     border-radius: 5px;
+    font-weight: bold;
+    font-size: 1em;
+    padding-bottom: 4px;
 }
 
+.signUpLink {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
