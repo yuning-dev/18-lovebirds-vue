@@ -1,8 +1,8 @@
-import { Sequelize, DataTypes } from 'sequelize'
+const { Sequelize, DataTypes } = require('sequelize')
 
 const sequelize = new Sequelize('sqlite::memory:')
 
-export const User = sequelize.define('User', {
+exports.User = sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

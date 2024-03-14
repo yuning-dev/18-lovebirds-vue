@@ -1,10 +1,20 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const path = require('path') // A utility for working with file hierarchies
+const cors = require('cors')
 const models = require('./models')
 
 // app setup
 
 const app = express() // create backend app
+
+// This is adding middleware to your endpoints
+// Middleware pre-processes or validates requests before your endpoint function runs
+app.use(bodyParser.json())
+
+// app.use(cors({
+//     origin: 'http://localhost:'
+// }))
 
 function serveMainPage(request, response) {
     response.send('This is a lovely lovebird app')
@@ -14,7 +24,8 @@ function serveTestPage(request, response) {
     response.sendFile(path.join(__dirname, '/index.html'))
 }
 
-function createUser(req, res) {
+async function createUser(req, res) {
+    console.log('Hello, I started')
     const {
         firstName,
         lastName,
@@ -25,7 +36,9 @@ function createUser(req, res) {
         password
     } = req.body
 
-    models.User.create({
+    console.log('Hello, I did something')
+
+    const user = await models.User.create({
         firstName: firstName,
         lastName,
         dateOfBirth,
@@ -34,6 +47,13 @@ function createUser(req, res) {
         sex,
         password
     })
+    
+    console.log('Hello, I made it')
+
+    console.log('The created user is')
+    console.log(user)
+
+    return res.sendStatus(204)
 }
 
 

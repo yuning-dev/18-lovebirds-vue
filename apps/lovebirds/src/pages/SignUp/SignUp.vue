@@ -17,7 +17,7 @@
                     </div>
                     <div :class="$style.item">
                         Date of birth
-                        <input v-model="dateOfBirth" type="date">
+                        <input v-model="dateOfBirth" type="date" :max="defaultDOB()">
                     </div>
                     <div :class="$style.item">
                         Sex
@@ -78,9 +78,9 @@ export default {
         }
     },
     computed: {
-        isNameValid() {
+        // isNameValid() {
 
-        }
+        // },
     },
     methods: {
         ...mapActions(useUserStore, ['signUp']),
@@ -94,6 +94,13 @@ export default {
                 sex: this.sex,
                 password: this.password
             })
+        },
+        defaultDOB() {
+            let today = new Date()
+            today.setFullYear(2024 - 18)
+            const todayInString = today.toISOString()
+            const dateInString = todayInString.substring(0,10)
+            return dateInString
         }
     }
 }
