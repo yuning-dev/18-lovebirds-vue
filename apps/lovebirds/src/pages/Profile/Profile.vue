@@ -1,13 +1,20 @@
 <template>
     <div :class="$style.wrapper">
-        This is a profile.
+        <div :class="$style.textWrapper">{{ user }}</div>
     </div>
 
 </template>
 
 <script>
+import { mapState } from 'pinia'
+
+import { useUserStore } from '@/stores/user';
+
 export default {
-    name: 'Profile'
+    name: 'Profile',
+    computed: {
+        ...mapState(useUserStore, ['user']),
+    }
 }
 </script>
 

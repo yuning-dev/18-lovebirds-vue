@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize')
 
 const sequelize = new Sequelize('sqlite::memory:')
 
-exports.User = sequelize.define('User', {
+exports.User = sequelize.define('Users', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -24,9 +24,6 @@ exports.User = sequelize.define('User', {
         type: DataTypes.STRING, // Could be encrypted
         allowNull: false
     },
-    phoneNumber: {
-        type: DataTypes.STRING
-    },
     sex: {
         type: DataTypes.STRING // Could be a foreign key referencing a Sex table
     },
@@ -34,3 +31,5 @@ exports.User = sequelize.define('User', {
         type: DataTypes.STRING // Would need to be hashed
     }
 })
+
+sequelize.sync()

@@ -27,10 +27,11 @@ async function createUser(req, res) {
         lastName,
         dateOfBirth,
         email,
-        phoneNumber,
         sex,
         password
     } = req.body
+
+    // TODO - Jordan to add validation middleware 
 
     console.log('Hello, I did something')
 
@@ -39,7 +40,6 @@ async function createUser(req, res) {
         lastName,
         dateOfBirth,
         email,
-        phoneNumber,
         sex,
         password
     })
@@ -48,8 +48,15 @@ async function createUser(req, res) {
 
     console.log('The created user is')
     console.log(user)
+    
+    const formattedUserData = {
+        ...user.dataValues
+    }
 
-    return res.sendStatus(204)
+    delete formattedUserData.password
+
+    // TODO - try sending a primitive and an array and see what happens
+    return res.send(formattedUserData)
 }
 
 function getUser(req, res) {

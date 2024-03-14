@@ -60,9 +60,13 @@
     margin: 10px;
 }
 
-input[type=text] {
-    width: 150px;
-    height: 10px;
+.item input[type=text] {
+    width: 200px;
+    height: 20px;
+}
+
+.errorMsg {
+    color: crimson;
 }
 
 .signUpBtn {

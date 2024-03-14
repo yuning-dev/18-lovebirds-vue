@@ -10,10 +10,12 @@
                     <div :class="$style.item">
                         First name
                         <input v-model="firstName" type="text" name="firstName">
+                        <div v-if="!isFirstNameValid" :class="$style.errorMsg">Please enter only letters</div>
                     </div>
                     <div :class="$style.item">
                         Last name
                         <input v-model="lastName" type="text" name="lastName">
+                        <div v-if="!isLastNameValid" :class="$style.errorMsg">Please enter only letters</div>
                     </div>
                     <div :class="$style.item">
                         Date of birth
@@ -30,6 +32,7 @@
                     <div :class="$style.item">
                         Email
                         <input v-model="email" type="text" name="email">
+                        <div v-if="!isEmailValid" :class="$style.errorMsg">Please enter a valid email address</div>
                     </div>
                     <!-- <div :class="$style.item">
                         Phone number
@@ -64,36 +67,81 @@ import { mapActions } from 'pinia'
 
 import { useUserStore } from '@/stores/user'
 
+const testData = {
+    firstName: 'John',
+    lastName: 'Doe',
+    dateOfBirth: '2000-01-28',
+    email: 'johnnyboy@yopmail.com',
+    sex: 'male',
+    password: 'password'
+}
+
 export default {
     name: 'SignUp',
     data() {
-        return {
-            firstName: null,
-            lastName: null,
-            dateOfBirth: null,
-            email: null,
-            // phoneNumber: null,
-            sex: null,
-            password: null,
-        }
+        // return {
+        //     firstName: null,
+        //     lastName: null,
+        //     dateOfBirth: null,
+        //     email: null,
+        //     // phoneNumber: null,
+        //     sex: null,
+        //     password: null,
+        // }
+        return { ...testData }
     },
     computed: {
-        // isNameValid() {
-
-        // },
+        // TODO - reduce duplication for name validation by having a method called within computed properties
+        isFirstNameValid() {
+            if (this.firstName === null || this.firstName === '') {
+                return true
+            } else {
+                let regex = /^[a-zA-Z]+$/
+                return regex.test(this.firstName)
+            }      
+        },
+        isLastNameValid() {
+            if (this.lastName === null || this.lastName === '') {
+                return true
+            } else {
+                let regex = /^[a-zA-Z]+$/
+                return regex.test(this.lastName)
+            }
+        },
+        isEmailValid() {
+            if (this.email === null || this.email === '') {
+                return true
+            } else {
+                let regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                return regex.test(this.email.toLowerCase())
+                // TODO - replace with library
+            }
+        }
     },
     methods: {
         ...mapActions(useUserStore, ['signUp']),
         signUpButtonClicked() {
-            this.signUp({
+            if (!(
+                    this.isEmailValid 
+                    && this.isFirstNameValid 
+                    && this.isLastNameValid 
+                    && this.sex 
+                    && this.dateOfBirth 
+                    && this.password
+                )) {
+                return
+            }
+            
+            if(this.signUp({
                 firstName: this.firstName,
                 lastName: this.lastName,
                 dateOfBirth: this.dateOfBirth,
                 email: this.email,
-                // phoneNumber: this.phoneNumber,
                 sex: this.sex,
                 password: this.password
-            })
+            })) {
+                this.$router.push({ name: 'profile' })
+            }
         },
         defaultDOB() {
             let today = new Date()

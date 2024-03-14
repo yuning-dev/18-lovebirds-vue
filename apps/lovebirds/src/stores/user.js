@@ -6,8 +6,11 @@ export const useUserStore = defineStore('user', {
         user: null,
     }),
     actions: {
-        signUp(data) {
-            axios.post('http://localhost:5173/api/user', data)
+        async signUp(data) {
+            const result = await axios.post('http://localhost:5173/api/user', data)
+
+            this.user = result.data
+            return this.user
         },
         logIn(data) {
             axios.post('http://localhost:5173/api/auth/log-in', data)

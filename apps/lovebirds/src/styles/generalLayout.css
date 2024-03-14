@@ -1,9 +1,11 @@
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: default;
     margin: 0;
     padding: 0;
 }
 
 .metaWrapper {
     background-color: black;
+    min-height: 100vh;
 }

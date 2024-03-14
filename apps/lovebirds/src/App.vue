@@ -5,8 +5,8 @@ import Topbar from './components/Topbar.vue'
 </script>
 
 <template>
-    <Topbar />
     <div :class="layout.metaWrapper">
+        <Topbar />
         <RouterView/>
     </div>
 </template>
