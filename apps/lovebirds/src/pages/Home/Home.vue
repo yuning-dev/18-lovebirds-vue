@@ -20,8 +20,20 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     name: 'Home',
+    data() {
+        return {
+            results: null
+        }
+    },
+    async mounted() {
+        const results = await axios.get('/api/user')
+
+        this.results = results
+    }
 }
 </script>
 

@@ -12,10 +12,6 @@ const app = express() // create backend app
 // Middleware pre-processes or validates requests before your endpoint function runs
 app.use(bodyParser.json())
 
-// app.use(cors({
-//     origin: 'http://localhost:'
-// }))
-
 function serveMainPage(request, response) {
     response.send('This is a lovely lovebird app')
 }
@@ -56,6 +52,10 @@ async function createUser(req, res) {
     return res.sendStatus(204)
 }
 
+function getUser(req, res) {
+    return res.send({ id: 111 }).status(200)
+}
+
 
 app.get('/', serveMainPage)
 app.get('/test', serveTestPage)
@@ -67,6 +67,8 @@ app.get('/test', serveTestPage)
 // app.delete - deletes an entity. Not idempotent
 
 app.post('/api/user', createUser)
+
+app.get('/api/user', getUser)
 
 
 // run the app
