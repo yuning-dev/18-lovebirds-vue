@@ -1,4 +1,5 @@
 const api = require('./api')
+const auth = require('./auth')
 
 exports.applyRoutes = (app) => {
     app.get('/', api.serveMainPage)
@@ -13,4 +14,6 @@ exports.applyRoutes = (app) => {
     app.post('/api/user', api.createUser)
 
     app.get('/api/user', api.getUser)
+
+    app.post('/api/auth/log-in', auth.logIn)
 }

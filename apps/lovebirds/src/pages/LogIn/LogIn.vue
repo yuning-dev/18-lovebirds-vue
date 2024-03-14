@@ -35,6 +35,10 @@ export default {
     methods: {
         ...mapActions(useUserStore, ['logIn']),
         logInBtnClicked() {
+            if (!(this.email && this.password)) {
+                return
+            }
+            
             this.logIn({
                 email: this.email,
                 password: this.password

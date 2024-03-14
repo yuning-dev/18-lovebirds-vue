@@ -4,6 +4,7 @@ import axios from 'axios'
 export const useUserStore = defineStore('user', {
     state: () => ({
         user: null,
+        id: null
     }),
     actions: {
         async signUp(data) {
@@ -12,8 +13,15 @@ export const useUserStore = defineStore('user', {
             this.user = result.data
             return this.user
         },
-        logIn(data) {
-            axios.post('http://localhost:5173/api/auth/log-in', data)
+        async logIn(data) {
+            const result = await axios.post('http://localhost:5173/api/auth/log-in', data)
+
+            if (result.status >= 400) {
+                return undefined
+            }
+
+            this.id = result.data.id
+            return this.id
         }
     }
 })
