@@ -53,6 +53,7 @@
                     <div :class="$style.item">
                         Password
                         <input v-model="password" type="text">
+                        <div v-if="!isPasswordValid" :class="$style.errorMsg">Please enter a password with at least 8 characters</div>
                     </div>
                 </div>
                 <button :class="$style.signUpBtn" @click="signUpButtonClicked">Sign-up</button>
@@ -115,6 +116,22 @@ export default {
                 let regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                 return regex.test(this.email.toLowerCase())
                 // TODO - replace with library
+            }
+        },
+        isPasswordValid() {
+            // let hasNumber = 0
+            // for (let i = 0; i < this.password.length; i++) {
+            //     if (Number(this.password[i]) !== NaN) {
+            //         hasNumber++
+            //         break
+            //     }                
+            // }
+            if (this.password === null || this.password === '') {
+                return true
+            } else if (this.password.length >= 8 && this.password.length <= 20) {
+                return true
+            } else {
+                return false
             }
         }
     },
