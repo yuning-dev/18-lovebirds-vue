@@ -53,7 +53,7 @@
                     <div :class="$style.item">
                         Password
                         <input v-model="password" type="text">
-                        <div v-if="!isPasswordValid" :class="$style.errorMsg">Please enter a password with at least 8 characters</div>
+                        <div v-if="!isPasswordValid" :class="$style.errorMsg">{{ passwordRequirementsMsg }}</div>
                     </div>
                 </div>
                 <button :class="$style.signUpBtn" @click="signUpButtonClicked">Sign-up</button>
@@ -118,20 +118,39 @@ export default {
                 // TODO - replace with library
             }
         },
+        // doesPasswordContainNum() {
+
+        // },
         isPasswordValid() {
-            // let hasNumber = 0
-            // for (let i = 0; i < this.password.length; i++) {
-            //     if (Number(this.password[i]) !== NaN) {
-            //         hasNumber++
-            //         break
-            //     }                
-            // }
+            let hasNumber = 0
+            for (let i = 0; i < this.password.length; i++) {
+                let num = Number(this.password[i])
+                if (!Number.isNaN(num)) {
+                    hasNumber++
+                    break
+                }                
+            }
             if (this.password === null || this.password === '') {
                 return true
-            } else if (this.password.length >= 8 && this.password.length <= 20) {
+            } else if (this.password.length >= 8 && this.password.length <= 20 && hasNumber === 1) {
                 return true
             } else {
                 return false
+            }
+        },
+        passwordRequirementsMsg() {
+            let hasNumber = 0
+            for (let i = 0; i < this.password.length; i++) {
+                let num = Number(this.password[i])
+                if (!Number.isNaN(num)) {
+                    hasNumber++
+                    break
+                }                
+            }
+            if (this.password.length < 8 || this.password.length > 20) {
+                return 'Please enter a password between 8 and 20 characters long'
+            } else if (hasNumber === 0) {
+                return 'The password needs to contain at least one number'
             }
         }
     },

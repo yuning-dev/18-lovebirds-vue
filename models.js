@@ -33,3 +33,15 @@ exports.User = sequelize.define('Users', {
 })
 
 sequelize.sync()
+
+// const generateUsers = () => {}
+
+// exports.User.bulkCreate([
+//     {
+//         firstName: 'Jessica',
+//         ...
+//     },
+//     {
+//         ...
+//     }
+// ])
