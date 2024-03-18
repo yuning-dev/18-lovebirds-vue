@@ -6,45 +6,24 @@
                 <div :class="$style.optionsWrapper">
                     <div :class="$style.options">
                         Sex:
-                        <select name="sex" v-model="sex" ref="sex">
-                            <option>Female</option>
+                        <select name="sex" v-model="sex" ref="sex" data-testid="sexSelect">
+                            <option data-testid="female">Female</option>
                             <option>Male</option>
                             <option>Any</option>
                         </select>
                     </div>
                     <div :class="$style.options">
                         Age:
-                        <div :class="{[$style.missingAge]: isAgeMissing}">
+                        <div :class="{[$style.missingAge]: isAgeMissing}" data-testid="ageRedBox">
                             <div :class="$style.ageOptions">
                                 <template v-for="ageOption in ageOptions">
                                     <div :class="$style.ageOption">
-                                        <input type="checkbox" :class="$style.ageCheckbox" v-model="age" :id=ageOption name="age" :value=ageOption>
+                                        <input type="checkbox" :class="$style.ageCheckbox" v-model="age" :id=ageOption name="age" :value=ageOption data-testid="ageCheckbox">
                                         <label :for=ageOption> {{ ageOption }}</label>
                                     </div>
                                 </template>
-                                <!-- <input type="checkbox" v-model="age" id="18-25" name="age" value="18-25">
-                                <label for="18-25">18-25</label>
-                                <input type="checkbox" v-model="age" id="26-35" name="age" value="26-35" :class="$style.ageOption">
-                                <label for="26-35">26-35</label>
-                                <input type="checkbox" v-model="age" id="36-45" name="age" value="36-45" :class="$style.ageOption">
-                                <label for="36-45">36-45</label>
-                                <input type="checkbox" v-model="age" id="46-55" name="age" value="46-55">
-                                <label for="46-55">46-55</label>
-                                <input type="checkbox" v-model="age" id="56-65" name="age" value="56-65" :class="$style.ageOption">
-                                <label for="56-65">56-65</label>
-                                <input type="checkbox" v-model="age" id=">65" name="age" value="65" :class="$style.ageOption">
-                                <label for=">65">>65</label> -->
                             </div>
                         </div>
-                        <!-- <select name="age" multiple v-model="age" ref="age">
-                            <option>18-25</option>
-                            <option>26-35</option>
-                            <option>36-45</option>
-                            <option>46-55</option>
-                            <option>56-65</option>
-                            <option>>66</option>
-                            <option>Any</option>
-                        </select> -->
                     </div>
                     <div :class="$style.options">
                         Personality:
@@ -62,7 +41,7 @@
                     </div>
                 </div>
                 <div :class="$style.warning" v-if="isInfoMissing">Please provide the required information</div>
-                <button :class="$style.searchBtn" @click="searchBtnClicked">Find love</button>
+                <button :class="$style.searchBtn" @click="searchBtnClicked" data-testid="submitBtn">Find love</button>
             </div>
         </div>            
     </div>
@@ -75,31 +54,30 @@ export default {
         return {
             sex: null,
             age: [],
-            isInfoMissing: false,
             wasSearchBtnClicked: false,
         }
     },
     computed: {
         isAgeMissing() {
-            return this.wasSearchBtnClicked && this.age.length === 0
+            return this.wasSearchBtnClicked && !this.age.length
         },
         ageOptions() {
             return ['18-25', '26-35', '36-45', '46-55', '56-65', '>65']
+        },
+        isInfoMissing() {
+            return this.wasSearchBtnClicked && (!this.age.length || !this.sex) 
         }
-        // TODO - add ageOptions array and use it to generate the checkboxes
     },
     methods: {
         searchBtnClicked() {
             this.wasSearchBtnClicked = true
-            if (this.sex === null || this.age.length === 0) {
-                this.isInfoMissing = true
-                if (this.sex === null) {
+            if (!this.sex || !this.age.length) {
+                if (!this.sex) {
                     this.$refs.sex.focus()
                 }
             } else {
                 this.$router.push('/profile')
             }
-            console.log(this.isAgeMissing)
         }
     }
 }

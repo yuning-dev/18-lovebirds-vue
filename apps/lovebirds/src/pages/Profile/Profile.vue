@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.wrapper">
+    <div :class="$style.wrapper" style="background-image: url('meadows-background.jpg')">
         <div :class="$style.textWrapper">{{ user }}</div>
     </div>
 

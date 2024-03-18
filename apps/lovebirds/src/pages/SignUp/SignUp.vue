@@ -118,10 +118,7 @@ export default {
                 // TODO - replace with library
             }
         },
-        // doesPasswordContainNum() {
-
-        // },
-        isPasswordValid() {
+        doesPasswordContainNum() {
             let hasNumber = 0
             for (let i = 0; i < this.password.length; i++) {
                 let num = Number(this.password[i])
@@ -129,27 +126,22 @@ export default {
                     hasNumber++
                     break
                 }                
-            }
+            }            
+            return (hasNumber === 1)
+        },
+        isPasswordValid() {
             if (this.password === null || this.password === '') {
                 return true
-            } else if (this.password.length >= 8 && this.password.length <= 20 && hasNumber === 1) {
+            } else if (this.password.length >= 8 && this.password.length <= 20 && this.doesPasswordContainNum) {
                 return true
             } else {
                 return false
             }
         },
         passwordRequirementsMsg() {
-            let hasNumber = 0
-            for (let i = 0; i < this.password.length; i++) {
-                let num = Number(this.password[i])
-                if (!Number.isNaN(num)) {
-                    hasNumber++
-                    break
-                }                
-            }
             if (this.password.length < 8 || this.password.length > 20) {
                 return 'Please enter a password between 8 and 20 characters long'
-            } else if (hasNumber === 0) {
+            } else if (!this.doesPasswordContainNum) {
                 return 'The password needs to contain at least one number'
             }
         }
@@ -157,13 +149,20 @@ export default {
     methods: {
         ...mapActions(useUserStore, ['signUp']),
         signUpButtonClicked() {
-            if (!(
+            if (
+                !(
                     this.isEmailValid 
                     && this.isFirstNameValid 
                     && this.isLastNameValid 
                     && this.sex 
                     && this.dateOfBirth 
-                    && this.password
+                    && this.isPasswordValid
+                ) || 
+                (
+                    !this.email
+                    || !this.firstName
+                    || !this.lastName
+                    || !this.password
                 )) {
                 return
             }
