@@ -78,23 +78,19 @@ describe('search page', () => {
         await sexSelect.setValue('Female')
         expect(sexSelect.element.value).toEqual('Female')
         expect(wrapper.text()).includes('Please provide the required information')
-    }),
+    })
     test('it highlights the inputs where information is missing when the submit button is clicked', async () => {
-        const wrapper = mount(Search, {
-            attachToDocument: true
-        })
+        const wrapper = mount(Search)
 
         const submitBtn = wrapper.find('[data-testid="submitBtn"]')
-        const sexSelect = wrapper.find('[data-testid="sexSelect"]')
-        // await submitBtn.trigger('click')
-        // expect(sexSelect).toBe(document.activeElement)
+        // const sexSelect = wrapper.find('[data-testid="sexSelect"]')
         // TODO - find out how to check if the select is in focus
 
         const ageRedBox = wrapper.find('[data-testid="ageRedBox"]')
         expect(ageRedBox.classes()).not.toContain('missingAge')
         await submitBtn.trigger('click')
         expect(ageRedBox.classes()).toContain('missingAge')
-    }),
+    })
     test('when all required info is provided, clicking submit takes user to the profile page', async () => {
         const wrapper = mount(Search, mountOptions)
 
@@ -102,11 +98,14 @@ describe('search page', () => {
         const ageCheckbox = wrapper.findAll('[data-testid="ageCheckbox"]')
         const submitBtn = wrapper.find('[data-testid="submitBtn"]')
         await sexSelect.setValue('Female')
-        await ageCheckbox[0].trigger('click')
+        expect(sexSelect.element.value).toBe('Female')
+        await ageCheckbox[0].setChecked(true)
+        expect(ageCheckbox[0].element.checked).toBeTruthy()
+
+        await wrapper.vm.$nextTick()
+
         await submitBtn.trigger('click')
 
         expect(router.push).toHaveBeenCalledOnce()
-
-        // TODO - fix test
     })
 })

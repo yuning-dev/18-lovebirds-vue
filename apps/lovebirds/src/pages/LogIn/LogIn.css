@@ -50,6 +50,10 @@
     width: 250px;
 }
 
+.redBorder {
+    border: 2px solid crimson;
+}
+
 .logInBtn {
     margin-top: 10px;
     width: 253.5px;
@@ -63,7 +67,11 @@
     padding-bottom: 4px;
 }
 
-.signUpLink {
+.logInBtn:active {
+    background: #039c31;
+}
+
+.signUpMessage {
     margin-top: 15px;
     font-size: 0.9em;
 }

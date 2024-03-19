@@ -14,6 +14,6 @@ export default mergeConfig(
           classNameStrategy: 'non-scoped',
         },
       },
-    }
+    },
   })
 )

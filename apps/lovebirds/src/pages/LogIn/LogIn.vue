@@ -6,12 +6,12 @@
                 <div :class="$style.title">Log in</div>
                 <div :class="$style.contentSubBox">           
                     <div :class="$style.contentWrapper">
-                        <input type="text" v-model="email" placeholder="email">
-                        <input type="text" v-model="password" placeholder="password">
+                        <input type="text" :class="{[$style.redBorder]: emailRedBorders}" data-testid="email" v-model="email" placeholder="email">
+                        <input type="text" :class="{[$style.redBorder]: passwordRedBorders}" data-testid="password" v-model="password" placeholder="password">
                     </div>
-                    <button :class="$style.logInBtn" @click="logInBtnClicked">Log in</button>
-                    <div :class="$style.signUpLink">Don't have an account? 
-                        <RouterLink to="/sign-up">Creat one here</RouterLink>
+                    <button :class="$style.logInBtn" data-testid="logInBtn" @click="logInBtnClicked">Log in</button>
+                    <div :class="$style.signUpMessage">Don't have an account? 
+                        <span><RouterLink to="/sign-up" data-testid="signUpLink">Creat one here</RouterLink></span>
                     </div>    
                 </div>
             </div>
@@ -29,12 +29,28 @@ export default {
     data() {
         return {
             email: null,
-            password: null
+            password: null,
+            hasLogInBtnBeenClicked: false
+        }
+    },
+    computed: {
+        emailRedBorders() {
+            return this.hasLogInBtnBeenClicked && this.isEmailEmpty
+        },
+        passwordRedBorders() {
+            return this.hasLogInBtnBeenClicked && this.isPasswordEmpty
+        },
+        isEmailEmpty() {
+            return !this.email          
+        },
+        isPasswordEmpty() {
+            return !this.password
         }
     },
     methods: {
         ...mapActions(useUserStore, ['logIn']),
         logInBtnClicked() {
+            this.hasLogInBtnBeenClicked = true
             if (!(this.email && this.password)) {
                 return
             }
@@ -44,7 +60,7 @@ export default {
                 password: this.password
             })
 
-            // this.$router.push({ name: 'home' })
+            this.$router.push({ name: 'home' })
         }
     }
 }
