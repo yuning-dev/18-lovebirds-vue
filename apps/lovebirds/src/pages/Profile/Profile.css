@@ -8,9 +8,42 @@
     align-items: center;
 }
 
+.contentWrapper {
+    display: flex;
+}
+
+.profileImg {
+    display: inline-block;
+}
+
+.name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #0047AB;
+}
+
+.age {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0047AB;
+    margin-bottom: 30px;
+}
+
+.tagInfoContainer {
+    display: flex;
+    gap: 4px;
+    margin-top: 5px;
+}
+
 .textWrapper {
-    color: white;
-    height: 500px;
+    height: 390px;
     width: 500px;
-    border: 1px solid hotpink;
+    background: white;
+    padding: 60px 40px 0 40px;
+}
+
+.heartBtn {
+    margin-top: 40px;
+    padding: 6px 7px;
+    border-radius: 50%;
 }
