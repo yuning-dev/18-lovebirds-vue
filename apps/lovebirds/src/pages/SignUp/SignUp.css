@@ -67,6 +67,12 @@
 
 .errorMsg {
     color: crimson;
+    font-size: 0.9em;
+}
+
+.requiredWarning {
+    color: crimson;
+    font-size: 0.85em;
 }
 
 .signUpBtn {

@@ -11,15 +11,18 @@
                         First name
                         <input v-model="firstName" type="text" name="firstName">
                         <div v-if="!isFirstNameValid" :class="$style.errorMsg">Please enter only letters</div>
+                        <div v-if="hasSignUpBtnBeenClicked && !this.firstName" :class="$style.requiredWarning">This field is required</div>
                     </div>
                     <div :class="$style.item">
                         Last name
                         <input v-model="lastName" type="text" name="lastName">
                         <div v-if="!isLastNameValid" :class="$style.errorMsg">Please enter only letters</div>
+                        <div v-if="hasSignUpBtnBeenClicked && !this.lastName" :class="$style.requiredWarning">This field is required</div>
                     </div>
                     <div :class="$style.item">
                         Date of birth
                         <input v-model="dateOfBirth" type="date" :max="defaultDOB()">
+                        <div v-if="hasSignUpBtnBeenClicked && !this.dateOfBirth" :class="$style.requiredWarning">This field is required</div>
                     </div>
                     <div :class="$style.item">
                         Sex
@@ -28,11 +31,13 @@
                             <option value="male">Male</option>
                             <option value="other">Other</option>
                         </select>
+                        <div v-if="hasSignUpBtnBeenClicked && !this.sex" :class="$style.requiredWarning">This field is required</div>
                     </div>
                     <div :class="$style.item">
                         Email
                         <input v-model="email" type="text" name="email">
                         <div v-if="!isEmailValid" :class="$style.errorMsg">Please enter a valid email address</div>
+                        <div v-if="hasSignUpBtnBeenClicked && !this.email" :class="$style.requiredWarning">This field is required</div>
                     </div>
                     <!-- <div :class="$style.item">
                         Phone number
@@ -74,7 +79,7 @@ const testData = {
     dateOfBirth: '2000-01-28',
     email: 'johnnyboy@yopmail.com',
     sex: 'male',
-    password: 'password'
+    password: 'password123'
 }
 
 export default {
@@ -89,7 +94,10 @@ export default {
         //     sex: null,
         //     password: null,
         // }
-        return { ...testData }
+        return { 
+            ...testData,
+            hasSignUpBtnBeenClicked: false
+        }
     },
     computed: {
         // TODO - reduce duplication for name validation by having a method called within computed properties
@@ -149,6 +157,7 @@ export default {
     methods: {
         ...mapActions(useUserStore, ['signUp']),
         signUpButtonClicked() {
+            this.hasSignUpBtnBeenClicked = true
             if (
                 !(
                     this.isEmailValid 

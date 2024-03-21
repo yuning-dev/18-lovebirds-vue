@@ -58,10 +58,14 @@ export default {
             this.logIn({
                 email: this.email,
                 password: this.password
+            }).then(() => {
+                this.$router.push({ name: 'home' })
+            }).catch((error) => {
+                // display error
             })
 
-            this.$router.push({ name: 'home' })
-        }
+            // TODO - add error message when user authentication fails
+        },
     }
 }
 

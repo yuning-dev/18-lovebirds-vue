@@ -17,7 +17,7 @@ export const useUserStore = defineStore('user', {
             const result = await axios.post('http://localhost:5173/api/auth/log-in', data)
 
             if (result.status >= 400) {
-                return undefined
+                throw new Error('invalid credentials')
             }
 
             this.id = result.data.id
