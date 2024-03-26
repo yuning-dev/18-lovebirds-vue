@@ -1,0 +1,23 @@
+.wrapper {
+    width: 750px;
+    background-color: aliceblue;
+    width: 500px;
+    margin: 0 auto 0 auto;
+    padding: 20px 30px;
+    border-radius: 5px;
+}
+
+.chatee {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.chatHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerIcons {
+    display: flex;
+    gap: 5px;
+}

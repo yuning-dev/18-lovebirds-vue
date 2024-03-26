@@ -5,6 +5,7 @@ import Search from '../pages/Search/Search.vue'
 import SignUp from '../pages/SignUp/SignUp.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import LogIn from '../pages/LogIn/LogIn.vue'
+import Chat from '../pages/Chat/Chat.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: Profile
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: Chat
     }
   ]
 })

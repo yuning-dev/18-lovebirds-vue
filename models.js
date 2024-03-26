@@ -1,6 +1,9 @@
 const { Sequelize, DataTypes } = require('sequelize')
 
-const sequelize = new Sequelize('sqlite::memory:')
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: 'database.sqlite'
+})
 
 exports.User = sequelize.define('Users', {
     id: {
@@ -45,3 +48,5 @@ sequelize.sync()
 //         ...
 //     }
 // ])
+
+// TODO - read on Getters, setters and virtuals: https://sequelize.org/docs/v6/core-concepts/getters-setters-virtuals/

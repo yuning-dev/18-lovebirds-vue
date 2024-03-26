@@ -1,0 +1,34 @@
+.wrapper {
+    height: 96.6vh;
+    width: 80%;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #002242;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.chatWindow {
+    background-color: aliceblue;
+    width: 500px;
+    margin: 0 auto 0 auto;
+    padding: 20px 30px;
+    border-radius: 5px;
+}
+
+.chatee {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.chatHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerIcons {
+    display: flex;
+    gap: 5px;
+}

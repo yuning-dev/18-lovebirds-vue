@@ -11,9 +11,11 @@ exports.applyRoutes = (app) => {
     // app.put - updates an entity. E.g., updates an existing row. Should be idempotent
     // app.delete - deletes an entity. Not idempotent
 
-    app.post('/api/user', api.createUser)
+    app.post('/api/user', api.createUser) // TODO - add user id route param
+    app.get('/api/user/:userId', api.getUserDetails)
 
-    app.get('/api/user', api.getUser)
+    // TODO - use GET with query parameters
+    app.post('/api/search', api.searchUsers)
 
     app.post('/api/auth/log-in', auth.logIn)
 }

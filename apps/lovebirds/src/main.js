@@ -9,8 +9,10 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHeart, fasHeart, faChevronLeft, faChevronRight)
+library.add(faHeart, fasHeart, faChevronLeft, faChevronRight, faWindowMinimize, faXmark)
 
 
 import App from './App.vue'

@@ -20,6 +20,9 @@
                         <font-awesome-icon :class="$style.heartIcon" :beat="hover" v-if="!isHearted" icon="fa-regular fa-heart" size="lg" />
                         <font-awesome-icon :class="$style.heartIcon" v-if="isHearted" icon="fa-solid fa-heart" size="lg" />
                     </button>
+                    <div :class="$style.canChatMsg" v-if="isHearted">You and Jess have now hearted each other! Click 
+                        <RouterLink to="/chat" style="text-decoration: none; color: #f70776;">here</RouterLink> to chat to Jess.
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,6 +34,7 @@
 import { mapState } from 'pinia'
 
 import { useUserStore } from '@/stores/user';
+import axios from 'axios';
 
 export default {
     name: 'Profile',
@@ -39,6 +43,12 @@ export default {
             isHearted: false,
             hover: false
         }
+    },
+    async mounted() {
+        await axios.post('/api/search', {
+            sex: 'male',
+            age: '18-25'
+        })
     },
     computed: {
         ...mapState(useUserStore, ['user']),
