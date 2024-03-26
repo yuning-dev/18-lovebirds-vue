@@ -1,9 +1,8 @@
 .wrapper {
-    width: 750px;
     background-color: aliceblue;
-    width: 500px;
+    width: 350px;
+    height: 425px;
     margin: 0 auto 0 auto;
-    padding: 20px 30px;
     border-radius: 5px;
 }
 
@@ -13,11 +12,67 @@
 }
 
 .chatHeader {
+    padding: 12.5px 30px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     display: flex;
     justify-content: space-between;
+    background-color: #AFDBF5;
 }
 
 .headerIcons {
     display: flex;
+    gap: 7.5px;
+}
+
+.headerIcon {
+    color: black
+}
+
+.headerIcon:hover {
+    color: crimson;
+}
+
+.chatWindow {
+    padding: 20px 15px 20px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatBody {
+    height: 320px;
+    display: flex;
+    flex-direction: column;
     gap: 5px;
+    overflow-y: auto;
+}
+
+.bubble {
+    width: fit-content;
+    max-width: 250px;
+    border: 1px solid #318CE7;
+    border-radius: 10px;
+    background-color: #318CE7;
+    color: white;
+    padding: 5px 10px;
+}
+
+.chatInput {
+    width: 250px;
+    height: 25px;
+    margin-right: 3px;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+.sendBtn {
+    padding: 5.25px 7px;
+    background: #66CDAA;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.sendBtn:hover {
+    filter: brightness(105%);
 }
