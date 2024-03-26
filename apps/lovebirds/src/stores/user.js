@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import initialMessages from './messages'
 
 export const useUserStore = defineStore('user', {
     state: () => ({
         user: null,
-        id: null
+        id: 1,
+        messages: initialMessages
     }),
     actions: {
         async signUp(data) {

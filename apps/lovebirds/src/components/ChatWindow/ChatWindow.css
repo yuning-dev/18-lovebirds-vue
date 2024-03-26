@@ -40,39 +40,60 @@
 }
 
 .chatBody {
-    height: 320px;
+    height: 310px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     overflow-y: auto;
+    padding-bottom: 10px;
 }
 
-.bubble {
+/* .bubble {
     width: fit-content;
     max-width: 250px;
-    border: 1px solid #318CE7;
     border-radius: 10px;
+    padding: 5px 10px;
+} */
+
+.rightBubble {
+    width: fit-content;
+    max-width: 250px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: 1px solid #318CE7;
     background-color: #318CE7;
     color: white;
+}
+
+.leftBubble {
+    width: fit-content;
+    max-width: 250px;
+    border-radius: 10px;
     padding: 5px 10px;
+    border: 1px solid #E1EBEE;
+    background-color: #E1EBEE;
 }
 
 .chatInput {
-    width: 250px;
+    width: 240px;
     height: 25px;
     margin-right: 3px;
     border: 2px solid grey;
     border-radius: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 1.0125em;
 }
 
 .sendBtn {
-    padding: 5.25px 7px;
-    background: #66CDAA;
+    padding: 5px 7px;
+    background: #3EB489;
     border: none;
     border-radius: 5px;
     color: white;
+    font-size: 10.5pt;
 }
 
 .sendBtn:hover {
-    filter: brightness(105%);
+    filter: brightness(110%);
 }

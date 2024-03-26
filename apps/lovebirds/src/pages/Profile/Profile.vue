@@ -20,8 +20,8 @@
                         <font-awesome-icon :class="$style.heartIcon" :beat="hover" v-if="!isHearted" icon="fa-regular fa-heart" size="lg" />
                         <font-awesome-icon :class="$style.heartIcon" v-if="isHearted" icon="fa-solid fa-heart" size="lg" />
                     </button>
-                    <div :class="$style.canChatMsg" v-if="isHearted">You and Jess have now hearted each other! Click 
-                        <RouterLink to="/chat" style="text-decoration: none; color: #f70776;">here</RouterLink> to chat to Jess.
+                    <div :class="$style.canChatMsg" v-if="isHearted">You and Pablo have now hearted each other! Click 
+                        <RouterLink to="/chat" style="text-decoration: none; color: #f70776;" :hover="{ cursor: pointer}">here</RouterLink> to chat to Pablo.
                     </div>
                 </div>
             </div>
